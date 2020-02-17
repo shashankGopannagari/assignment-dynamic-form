@@ -1,0 +1,91 @@
+<!-- <!-- <hello name="{{ name }}"></hello>
+<p>
+  Start editing to see some magic happen :)
+</p> -->
+
+
+<div class="container">
+	<div class="dynamic-form">
+    <form name="dynamic-form" [formGroup]="dynamicForm" (ngSubmit)="onSubmit()">
+		<fieldset>
+			<legend>{{obj.schema.title}}</legend>
+			<div class="form-group">
+				<label for="firstName">{{obj.schema.properties.firstName.title}}
+          <span class="text-danger">*</span>
+        </label>
+				<input class="form-control" type="text" name="firstName" id="firstName"
+           formControlName="firstName" required />
+           <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)"          class="text-danger">
+               <div *ngIf="firstName.errors.required">
+                         First Name is required
+               </div>
+               <div *ngIf="firstName.errors.minlength">
+                 minimum length should be 2 chars.
+               </div>
+           </div>
+       </div>
+
+				<div class="form-group">
+					<label for="lastName">{{obj.schema.properties.lastName.title}}
+            <span class="text-danger">*</span>
+          </label>
+					<input class="form-control" type="text" name="lastName" id="lastName" 
+          formControlName="lastName" required/>
+          <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)" class="text-danger">
+             <div *ngIf="lastName.errors.required">
+               Last name is required
+             </div>
+
+          </div>
+       </div>
+
+	<div class="form-group">
+					<label for="age">{{obj.schema.properties.age.title}}</label>
+					<input class="form-control" type="text" name="age" id="age" 
+          formControlName="age" />
+       </div>
+
+	<div class="form-group">
+					<label for="bio">{{obj.schema.properties.bio.title}}</label>
+					<input class="form-control" type="text" name="bio" id="bio" 
+          formControlName="bio" />
+       </div>
+
+
+       	<div class="form-group">
+					<label for="pwd">{{obj.schema.properties.password.title}}
+            <span class="text-danger">*</span>
+          </label>
+					<input class="form-control" type="password" name="pwd" id="pwd" 
+          formControlName="password" required/>
+       </div>
+
+       	<div class="form-group">
+					<label for="telephone">{{obj.schema.properties.telephone.title}}
+            <span class="text-danger">*</span> </label>
+					<input class="form-control" type="text" name="telephone" id="telephone" 
+          formControlName="telephone" required/>
+
+         <div *ngIf="telephone.invalid && (telephone.dirty || telephone.touched)" class="text-danger">
+              <div *ngIf="telephone.errors.required">
+                Telephone Number is required
+              </div>
+   <div *ngIf="telephone.errors.minlength">
+     must be 10 chars
+   </div>
+
+         </div>
+
+       </div>
+
+
+		</fieldset>
+
+<button type="submit" class="btn btn-primary" [disabled]="dynamicForm.invalid">Submit</button>
+
+</form>
+	</div>
+
+{{dynamicForm.value | json}}
+
+</div>
